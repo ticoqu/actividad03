@@ -11,8 +11,8 @@ Aquí crearás una máquina virtual simple usando Terraform y un archivo cloud-i
 Desplegar una máquina virtual básica en Proxmox usando Terraform y Cloud-Init.
 
 ### Entrega
-Captura de pantalla del estado final de terraform apply.
-Comprobar acceso por SSH a la VM.
+- Captura de pantalla del estado final de terraform apply.
+- Comprobar acceso por SSH a la VM.
 
 ## Pasos a seguir
 
