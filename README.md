@@ -61,28 +61,28 @@ Desplegar una máquina virtual básica en Proxmox usando Terraform y Cloud-Init.
    ```
 
 2. **Crear el archivo `cloud-config.yaml`**
-```hcl
-#cloud-config
-users:
-  - name: usuario1
-    ssh-authorized-keys:
-      - ssh-rsa AAAAB3N
-    passwd: $6$xRwIN0
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    lock_passwd: false
-    shell: /bin/bash
+   ```hcl
+   #cloud-config
+   users:
+     - name: usuario1
+       ssh-authorized-keys:
+         - ssh-rsa AAAAB3N
+       passwd: $6$xRwIN0
+       sudo: ALL=(ALL) NOPASSWD:ALL
+       lock_passwd: false
+       shell: /bin/bash
 
-  - name: usuario2
-    ssh-authorized-keys:
-      - ssh-rsa AAAAB3NMK0
-    passwd: $6$M4vp.
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    lock_passwd: false
-    shell: /bin/bash
-packages:
-  - htop
-  - rsyslog
-```
+     - name: usuario2
+       ssh-authorized-keys:
+         - ssh-rsa AAAAB3NMK0
+       passwd: $6$M4vp.
+       sudo: ALL=(ALL) NOPASSWD:ALL
+       lock_passwd: false
+       shell: /bin/bash
+   packages:
+     - htop
+     - rsyslog
+   ```
 
 3. **Verificar tareas**
    ```bash
