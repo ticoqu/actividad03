@@ -17,7 +17,7 @@ Desplegar una máquina virtual básica en Proxmox usando Terraform y Cloud-Init.
 ## Pasos a seguir
 
 1. **Crear el archivo `main.tf`**
-   ```hcl
+```hcl
    resource "proxmox_vm_qemu" "vm_basica" {
   name        = "vm-basica"
   target_node = "red-33-proxmox-1"
@@ -59,7 +59,7 @@ Desplegar una máquina virtual básica en Proxmox usando Terraform y Cloud-Init.
     mtu    = 1450
   }
 }
-   ```
+```
 
 2. **Crear el archivo `cloud-config.yaml`**
    ```hcl
