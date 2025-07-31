@@ -19,45 +19,46 @@ Desplegar una máquina virtual básica en Proxmox usando Terraform y Cloud-Init.
 1. **Crear el archivo `main.tf`**
    ```hcl
    resource "proxmox_vm_qemu" "vm_basica" {
-     name        = "vm-basica"
-     desc        = "VM básica con cloud-init"
-     clone       = "debian-12-qcow2-template"
-     cores       = 2
-     sockets     = 1
-     memory      = 2048
-     scsihw      = "virtio-scsi-pci"
-     agent       = 1
-     qemu_os     = "l26"
-     ciuser      = "automatizacion"
-     cipassword  = "$6$xRwIN4XsEB.mf0"
-     searchdomain = "agetic.gob.bo"
-     nameserver  = "8.8.8.8"
-     ipconfig0   = "ip=192.168.1.10/24,gw=192.168.1.1"
+  name        = "vm-basica"
+  target_node = "red-33-proxmox-1"
+  desc        = "VM básica con cloud-init"
+  clone       = "debian-12-qcow2-template"
+  cores       = 2
+  sockets     = 1
+  memory      = 2048
+  scsihw      = "virtio-scsi-pci"
+  agent       = 1
+  qemu_os     = "l26"
+  ciuser      = "automatizacion"
+  cipassword  = "12345"
+  searchdomain = "agetic.gob.bo"
+  nameserver  = "8.8.8.8"
+  ipconfig0   = "ip=192.168.33.20/24,gw=192.168.33.1"
 
-     disks {
-       virtio {
-         virtio0 {
-           disk {
-             storage = "vol1"
-             size    = "8G"
-           }
-         }
-       }
-       ide {
-         ide2 {
-           cloudinit {
-             storage = "vol1"
-           }
-         }
-       }
-     }
+  disks {
+    virtio {
+      virtio0 {
+        disk {
+          storage = "vol1"
+          size    = "8G"
+        }
+      }
+    }
+    ide {
+      ide2 {
+        cloudinit {
+          storage = "vol1"
+        }
+      }
+    }
+  }
 
-     network {
-       model  = "virtio"
-       bridge = "vmbr0"
-       mtu    = 0
-     }
-   }
+  network {
+    model  = "virtio"
+    bridge = "vmbr0"
+    mtu    = 1450
+  }
+}
    ```
 
 2. **Crear el archivo `cloud-config.yaml`**
